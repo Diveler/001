@@ -1,0 +1,74 @@
+#include<iostream>
+#include<ctime>
+#include<cstdlib>
+using namespace std;
+void main(){
+	int x,x0,y,y0,z,z0,i,n,m;//定义变量
+	srand(time(0));//定义时间种子
+	for(i=0;i<30;i++){//利用FOR循环进行多次输出
+		n=i+1;
+		x = rand()%99+1;//产生随机数
+		x0 = rand()%99+1;
+		y = rand()%99+1;
+		y0 = rand()%99+1;
+		z = rand()%(3-0+1)+0;
+		z0 = rand()%(1-0+1)+0;
+		cout<<n<<"    "<<z0<<"  ";//计数
+		if(x<x0){//保证x>x0
+			m=x;
+			x=x0;
+			x0=m;
+		}
+		if(y<y0){//保证y>y0
+			m=y;
+			y=y0;
+			y0=m;
+		}
+		switch(z0){//判断整数或分数
+		case 0:{
+			switch(z){//运算法则判断
+			case 0:
+				cout<<x<<" + "<<y<<" ="<<endl;
+				break;
+            case 1:
+	       		cout<<x<<" - "<<y<<" ="<<endl;
+		       	break;
+    	    case 2:
+	   		    cout<<x<<" * "<<y<<" ="<<endl;
+	    	    break;
+    	    case 3:
+				if(y!=0)//防止出现除数为零的情况
+			       	cout<<x<<" / "<<y<<" ="<<endl;
+				else
+					i--;
+				break;
+				}
+			break;
+			   }
+		case 1:{
+			if(x0!=0||y0!=0){
+				switch(z){//运算法则判断
+				case 0:
+					cout<<"("<<x<<"/"<<x0<<")"<<" + "<<"("<<y<<"/"<<y0<<")"<<" ="<<endl;
+			        break;
+        		case 1:
+	        		cout<<"("<<x<<"/"<<x0<<")"<<" - "<<"("<<y<<"/"<<y0<<")"<<" ="<<endl;
+		        	break;
+    		    case 2:
+	    		    cout<<"("<<x<<"/"<<x0<<")"<<" * "<<"("<<y<<"/"<<y0<<")"<<" ="<<endl;
+		    	    break;
+	    	    case 3:
+		        	if(y!=0)//防止出现除数为零的情况
+			        	cout<<"("<<x<<"/"<<x0<<")"<<" / "<<"("<<y<<"/"<<y0<<")"<<" ="<<endl;
+			        else
+				        i--;
+			        break;
+				}
+			}
+			else
+				i--;
+			break;
+			   }
+		}
+	}
+}
